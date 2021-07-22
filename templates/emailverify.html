@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Verification</title>
+</head>
+<body>
+
+<div style="height: 100vh" class="d-flex justify-content-center align-items-center">
+    <form method="post" action="/register/activate">
+        {% csrf_token %}
+        <input type="hidden" value="{{ username }}" name='username'>
+        <input type="hidden" value="{{ email }}" name='email'>
+        <input type="hidden" value="{{ password }}" name='password'>
+        <h3>Please enter the Code that sent to Your email</h3>
+        <div class="d-flex justify-content-center">
+            {% for error in verify_form.code.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+            {{ verify_form.code }}
+            <br>
+            <hr>
+            <div class="d-flex justify-content-center">
+                <br>
+                <button style="margin-left: 4px;" type="submit" class="btn btn-primary">Verify</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
