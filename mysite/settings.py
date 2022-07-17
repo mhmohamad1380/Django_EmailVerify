@@ -80,7 +80,7 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'testingappdjango@gmail.com'
-EMAIL_HOST_PASSWORD = 'ukmugyxqauopyryl'
+EMAIL_HOST_PASSWORD = 'wdkmwcfjkuntkffx'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
