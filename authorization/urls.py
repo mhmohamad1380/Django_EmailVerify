@@ -8,4 +8,6 @@ urlpatterns = [
     path('register/activate', views.activate),
     path('login', views.login_page),
     path('logout', views.log_out),
+    path("forget_password", views.forget_password),
+    path("login/<uuid>", views.login_without_password),
 ]

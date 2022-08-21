@@ -1,7 +1,7 @@
 import random
-
+import uuid
+from .models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -107,3 +107,29 @@ def activate(request):
             return redirect('/login')
         return HttpResponse('Something is wrong ,please try again')
     return HttpResponse('Something is wrong ,please try again.')
+
+
+def forget_password(request):
+    
+    if "forget_password_email" in request.POST :
+        email = request.POST['forget_password_email']
+        filtered = User.objects.filter(email__iexact=email)
+        if filtered.exists():
+            print("user exists...")
+            filtered = filtered.first()
+            message = f"this is a link to login without password:\n {request.META['HTTP_HOST']}/login/{filtered.uuid}"
+            send_mail("Login Without Password", message, "testingappdjango@gmail.com", [filtered.email])
+    context = {
+
+    }
+    return render(request, 'authorization/EmailAuth_forget_password.html', context)
+
+def login_without_password(request, uuid):
+    user = User.objects.filter(uuid=uuid)
+    if user.exists():
+        print()
+        login(request, user.first())
+        return redirect("/")
+    else:
+        return HttpResponse("Something went Error...")
+        

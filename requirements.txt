@@ -4,14 +4,9 @@ django-recaptcha==2.0.6
 django-render-partial==0.4
 django-rest-framework==0.1.0
 djangorestframework==3.12.4
-Pillow==8.2.0
+Pillow
 pytz==2021.1
 sorl-thumbnail==12.7.0
 sqlparse==0.4.1
-dj-database-url
-django-heroku
-gunicorn
-psycopg2
 python-decouple
-whitenoise
 requests
